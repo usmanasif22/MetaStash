@@ -12,7 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def register_success
-    # UserMailer.welcome_email(@user).deliver
+    UserMailer.welcome_email(@user).deliver_now
     render json: {
     message: "Welcome! You have signed up successfully.",
     user: current_user, status: 200

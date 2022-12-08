@@ -6,7 +6,7 @@ class PasswordController < ApplicationController
         @user = User.find_by(email: params[:email])
         if @user.present?
             @user.generate_password_token!
-                UserMailer.forget_email(@user).deliver
+                UserMailer.forget_email(@user).deliver_now
                 render json: {message:"reset token sent to email",token:@user.reset_password_token,status: 200}, status: :ok
         else
             render json: {error: "Email address not found. Please check and try again",status:404}, status: :ok
@@ -29,7 +29,7 @@ class PasswordController < ApplicationController
             render json: {error: @user.errors.full_messages, status:500}, status: :ok
           end
         else
-          render json: {error:"Link not valid or expired. Try generating a new link.",status:404}, status: :ok
+          render json: {error:"Token not valid or expired. Try generating a new Token.",status:404}, status: :ok
         end
       end
 end
