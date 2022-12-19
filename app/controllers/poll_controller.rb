@@ -30,7 +30,12 @@ class PollController < ApplicationController
                 render json: {
                     message: "Invalid Ngo Id 4",
                      status: 404
-                  }, status: :ok                
+                  }, status: :ok  
+            elsif @ngo_id_1 == @ngo_id_2 || @ngo_id_1 == @ngo_id_3 || @ngo_id_1 == @ngo_id_4   
+                render json: {
+                    message: "same Ngo Id appears more than once",
+                     status: 404
+                  }, status: :ok       
             elsif @user.role != "admin"
                 render json: {
                     message: "Authorization Failed, Only admin can create poll",
