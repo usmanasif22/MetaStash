@@ -31,7 +31,7 @@ class PollController < ApplicationController
                     message: "Invalid Ngo Id 4",
                      status: 404
                   }, status: :ok  
-            elsif @ngo_id_1 == @ngo_id_2 || @ngo_id_1 == @ngo_id_3 || @ngo_id_1 == @ngo_id_4   
+            elsif @ngo_id_1 == @ngo_id_2 || @ngo_id_1 == @ngo_id_3 || @ngo_id_1 == @ngo_id_4 || @ngo_id_2 == @ngo_id_3 || @ngo_id_2 == @ngo_id_4 || @ngo_id_3 == @ngo_id_4 
                 render json: {
                     message: "same Ngo Id appears more than once",
                      status: 404
