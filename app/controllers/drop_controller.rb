@@ -67,18 +67,18 @@ class DropController < ApplicationController
 
     def city
       @re = []
-      # @citi = CS.states(params[:country]).keys.flat_map {
-      #     |state| @re.concat(CS.cities(state, params[:country]))
-      # }
-      @prov = CS.states(params[:country]).map {
-          |k,state|
-          if params[:province] == state
-              @re=k
-          end
+      @citi = CS.states(params[:country]).keys.flat_map {
+          |state| @re.concat(CS.cities(state, params[:country]))
       }
-              # render json: { data: @re.sort! }, status: :ok
-      @cities = CS.cities(@re, params[:country])
-      render json: { data: @cities }, status: :ok
+    #   @prov = CS.states(params[:country]).map {
+    #       |k,state|
+    #       if params[:province] == state
+    #           @re=k
+    #       end
+    #   }
+              render json: { data: @re.sort! }, status: :ok
+    #   @cities = CS.cities(@re, params[:country])
+    #   render json: { data: @cities }, status: :ok
   end
   
   def province

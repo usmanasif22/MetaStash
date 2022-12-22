@@ -34,16 +34,16 @@ form do |f|
     f.label :country, class: 'l1'
     f.country_select  :country, priority_countries: ["PK"]
     
-    @province = CS.states( :pk)
-    @provinces= @province.map{|k,v| v}
-    f.label :province, class: 'l1'
-    f.select :province, @provinces
+    # @province = CS.states( :pk)
+    # @provinces= @province.map{|k,v| v}
+    # f.label :province, class: 'l1'
+    # f.select :province, @provinces
     @cities = CS.cities(:pb, :pk)
-    f.label :city, class: 'l2'
+    f.label :city, class: 'l1'
     f.select :city, @cities
-    f.input :latitude 
-    f.input :longitude 
-    f.input :reward_amount
+    f.input :latitude , class: 'l1'
+    f.input :longitude , class: 'l1'
+    f.input :reward_amount, class: 'l1'
     f.input :is_active, as: :select, collection: [["Yes", true], ["No", false]], required: true
   end
     
