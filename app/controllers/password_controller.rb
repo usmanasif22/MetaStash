@@ -29,7 +29,7 @@ class PasswordController < ApplicationController
             render json: {error: @user.errors.full_messages, status:500}, status: :ok
           end
         else
-          render json: {error:"Token not valid or expired. Try generating a new Token.",status:404}, status: :ok
+          render json: {error:"Token not valid or expired. Try generating a new Token.",status:401}, status: :ok
         end
       end
 end
