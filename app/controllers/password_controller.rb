@@ -25,8 +25,6 @@ class PasswordController < ApplicationController
         if @user.present? && @user.password_token_valid?
           if @user.reset_password!(params[:password])
             render json: {message:"password changed successfully!!!",status: 200}, status: :ok
-          else
-            render json: {error: @user.errors.full_messages, status:500}, status: :ok
           end
         else
           render json: {error:"Token not valid or expired. Try generating a new Token.",status:401}, status: :ok
