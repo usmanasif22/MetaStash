@@ -27,12 +27,12 @@ class Users::SessionsController < Devise::SessionsController
     yield resource if block_given?
     respond_with resource, location: after_sign_in_path_for(resource)
     else
-      render json: { message: 'Invalid Password!', status: 401}, status: :ok
+      render json: {data: { message: 'Invalid Password!', status: 401}}, status: :ok
     end
   end
 
   def show_invalid_message
-    render json: { message: 'No User Exist with this Email!', status: 404}, status: :ok
+    render json: { data:{ message: 'No User Exist with this Email!', status: 404}}, status: :ok
   end
 
   def respond_with(resource, _opts = {})
